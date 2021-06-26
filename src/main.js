@@ -1,9 +1,9 @@
 /*
- * @Author: lucky
- * @Date: 2021-06-24 15:58:53
- * @LastEditors: [you name]
- * @LastEditTime: 2021-06-24 18:48:43
- * @Description:
+ * @Description: 
+ * @Author: Mogy
+ * @Date: 2021-06-24 19:23:45
+ * @LastEditors: Mogy
+ * @LastEditTime: 2021-06-26 21:18:06
  */
 import Vue from 'vue'
 
