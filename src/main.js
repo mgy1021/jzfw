@@ -1,3 +1,10 @@
+/*
+ * @Author: lucky
+ * @Date: 2021-06-24 15:58:53
+ * @LastEditors: [you name]
+ * @LastEditTime: 2021-06-24 18:48:43
+ * @Description:
+ */
 import Vue from 'vue'
 
 import Cookies from 'js-cookie'
@@ -23,9 +30,9 @@ import BriupMap from '@/components/BriupMap'
 import PhoneChart from '@/components/PhoneChart'
 
 // 自定义组件
-Vue.component('Briupdrawer',Briupdrawer)
-Vue.component('BriupMap',BriupMap)
-Vue.component('PhoneChart',PhoneChart)
+Vue.component('Briupdrawer', Briupdrawer)
+Vue.component('BriupMap', BriupMap)
+Vue.component('PhoneChart', PhoneChart)
 
 import Vant from 'vant'
 import 'vant/lib/index.css'
@@ -35,7 +42,7 @@ import '@/styles/university.css'
 Vue.use(Vant)
 
 Vue.use(Element, {
-  size: Cookies.get('size') || 'medium' // set element-ui default size
+  size: Cookies.get('size') || 'mini' // set element-ui default size
 })
 
 // register global utility filters
