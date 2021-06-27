@@ -2,7 +2,7 @@
  * @Author: lucky
  * @Date: 2021-06-24 15:58:53
  * @LastEditors: [you name]
- * @LastEditTime: 2021-06-26 10:47:39
+ * @LastEditTime: 2021-06-27 18:42:53
  * @Description:
 -->
 <template>
@@ -36,7 +36,7 @@
 </template>
 
 <script>
-import { pageQuery, save } from '@/api/log'
+import { pageQuery } from '@/api/log'
 import moment from 'moment'
 
 export default {
@@ -49,7 +49,7 @@ export default {
         pageSize: 10
       },
       // 表格数据
-      tableData: {},
+      tableData: [],
       // 数据总条数
       total: 0
     }
