@@ -1,8 +1,8 @@
 <!--
  * @Author: lucky
  * @Date: 2021-06-24 15:58:53
- * @LastEditors: [you name]
- * @LastEditTime: 2021-06-27 18:42:53
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-06-28 16:46:12
  * @Description:
 -->
 <template>
@@ -31,7 +31,6 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
     />
-
   </div>
 </template>
 
@@ -42,7 +41,6 @@ import moment from 'moment'
 export default {
   data() {
     return {
-
       // 分页
       params: {
         page: 1,
