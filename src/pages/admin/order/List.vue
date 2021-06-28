@@ -3,7 +3,7 @@
  * @Author: Mogy
  * @Date: 2021-06-24 19:23:45
  * @LastEditors: Mogy
- * @LastEditTime: 2021-06-26 20:16:56
+ * @LastEditTime: 2021-06-27 09:22:47
 -->
 <template>
   <!-- 订单管理页 -->
@@ -39,7 +39,7 @@
         </template>
       </el-table-column>
       <el-table-column prop="customerId" label="顾客ID" align="center"></el-table-column>
-      <el-table-column prop="employeeId" label="员工ID" align="center">
+      <el-table-column v-if="activeName !=='待派单'" prop="employeeId" label="员工ID" align="center">
         <template slot-scope="scope">{{scope.row.employeeId === null?'--':scope.row.employeeId}}</template>
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="120" align="center">
