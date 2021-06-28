@@ -3,7 +3,7 @@
  * @Author: ljy
  * @Date: 2021-06-24 16:23:07
  * @LastEditors: ljy
- * @LastEditTime: 2021-06-28 18:33:44
+ * @LastEditTime: 2021-06-28 18:39:40
 -->
 <template>
   <!-- 资讯列表页面 -->
@@ -303,7 +303,6 @@ export default {
 };
 </script>
 <style scoped>
-<<<<<<< HEAD
 .up {
   float: right;
 }
@@ -314,6 +313,4 @@ export default {
 .title {
   text-align: center;
 }
-=======
->>>>>>> b49f7baf1fd656ebc33d6eec00037e8b767a7c7e
 </style>

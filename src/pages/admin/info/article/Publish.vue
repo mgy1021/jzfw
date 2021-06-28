@@ -3,7 +3,7 @@
  * @Author: ljy
  * @Date: 2021-06-24 16:23:07
  * @LastEditors: ljy
- * @LastEditTime: 2021-06-28 15:56:06
+ * @LastEditTime: 2021-06-28 18:39:49
 -->
 <template>
   <!-- 发布资讯页面 -->
@@ -148,11 +148,8 @@ export default {
 };
 </script>
 <style scoped>
-<<<<<<< HEAD
 .btn {
   margin-top: 50px;
   text-align: right;
 }
-=======
->>>>>>> b49f7baf1fd656ebc33d6eec00037e8b767a7c7e
 </style>
