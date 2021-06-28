@@ -2,8 +2,8 @@
  * @Description: 用户相关接口
  * @Author: Ronda
  * @Date: 2021-05-10 15:11:10
- * @LastEditors: Ronda
- * @LastEditTime: 2021-05-27 09:37:33
+ * @LastEditors: wfz
+ * @LastEditTime: 2021-06-26 10:30:09
  */
 import request, { post, get } from '@/utils/request'
 // 用户登录相关接口
@@ -61,6 +61,7 @@ export function saveOrUpdate(data) {
  * @return {*}
  */
 export function findUserDetailsById(data) {
+  // console.log(data, '000');
   return get('/baseUser/findUserDetailsById', data)
 }
 
