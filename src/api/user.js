@@ -2,10 +2,16 @@
  * @Description: 用户相关接口
  * @Author: Ronda
  * @Date: 2021-05-10 15:11:10
+<<<<<<< HEAD
  * @LastEditors: wfz
  * @LastEditTime: 2021-06-26 10:30:09
+=======
+ * @LastEditors: ljy
+ * @LastEditTime: 2021-06-28 18:32:32
+>>>>>>> 3f530b4d36d1027dc12e5ed9fcc326c49255b058
  */
 import request, { post, get } from '@/utils/request'
+
 // 用户登录相关接口
 /**
  * @description: 用户登录接口

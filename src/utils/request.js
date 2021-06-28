@@ -111,4 +111,11 @@ async function logout() {
   router.push(`/login`)
 }
 
+/* export function get(url, data) {
+  return service.get(url,{params:data});
+}
+export function post(url,data){
+  return service.post(url,qs.stringify(data));
+}
+ */
 export default service

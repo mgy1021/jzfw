@@ -41,6 +41,11 @@ export const constantRoutes = [
         path: '/redirect/:path*',
         component: () => import('@/views/redirect/index')
       }
+      // {
+      //   path: '/Details',
+      //   component: () => import('@/pages/admin/waiter/Details'),
+      //   hidden: true
+      // },
     ]
   },
   {
@@ -74,6 +79,26 @@ export const constantRoutes = [
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
         meta: { title: 'dashboard', icon: 'icon_2', affix: true }
+      },
+      {
+        path: '/Details',
+        component: () => import('@/pages/admin/waiter/Details'),
+        hidden: true
+      },
+      {
+        path: '/Publish',
+        component: () => import('@/pages/admin/info/article/Publish'),
+        hidden: true
+      },
+      {
+        path: '/List',
+        component: () => import('@/pages/admin/info/article/List'),
+        hidden: true
+      },
+      {
+        path: '/Details',
+        component: () => import('@/pages/admin/info/article/Details'),
+        hidden: true
       }
     ]
   }
