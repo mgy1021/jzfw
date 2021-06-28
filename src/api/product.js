@@ -1,12 +1,4 @@
-/*
- * @Author: your name
- * @Date: 2021-06-24 18:58:12
- * @LastEditTime: 2021-06-25 19:58:53
- * @LastEditors: your name
- * @Description: In User Settings Edit
- * @FilePath: \项目模块\src\api\product.js
- */
-// 产品管理api
+
 /*
  * @Description: 产品管理API
  * @Author: Mogy

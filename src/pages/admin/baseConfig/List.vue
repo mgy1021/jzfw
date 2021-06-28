@@ -2,7 +2,7 @@
  * @Author: lucky
  * @Date: 2021-06-24 15:58:53
  * @LastEditors: ljy
- * @LastEditTime: 2021-06-28 16:31:49
+ * @LastEditTime: 2021-06-28 18:32:40
  * @Description:  基础配置页面
 -->
 <template>
