@@ -18,13 +18,7 @@
     <!-- //*******************************头像 *******************************************-->
 
     <!-- //*******************************更换头像模态框 **********************************-->
-    <el-dialog
-      :title="title"
-      :visible.sync="visible"
-      width="45%"
-      class="motai1"
-      @close="toClose"
-    >
+    <el-dialog :title="title" :visible.sync="visible" width="45%" class="motai1" @close="toClose">
       <el-form ref="ruleForm" :model="form" :rules="rules">
         <el-form-item prop="userface">
           <el-upload
@@ -34,7 +28,7 @@
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
           >
-            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            <img v-if="imageUrl" :src="imageUrl" class="avatar" />
             <i v-else class="el-icon-plus avatar-uploader-icon" />
           </el-upload>
         </el-form-item>
@@ -50,10 +44,10 @@
     <!-- {{ user }} -->
     <!-- <br />
     <br />
-    <br /> -->
+    <br />-->
     <!-- {{ tabledata }} -->
-    <br>
-    <br>
+    <br />
+    <br />
     <!-- {{ tabledata.roles }} -->
     <!-- {{ tabledata.roles[0].name }} -->
     <!-- //个人信息展示 -->
@@ -70,7 +64,7 @@
         <el-table-column prop="birth" label="生日"> </el-table-column>
         <el-table-column prop="email" label="邮箱"> </el-table-column>
         <el-table-column prop="status" label="状态"> </el-table-column>
-      </el-table> -->
+      </el-table>-->
 
       <!-- //*******************************个人信息展示 **********************************-->
       <ul class="msg">
@@ -85,23 +79,15 @@
         <li>你的状态</li>
       </ul>
       <ul class="t-data">
-        <li style="font-family: 'Kristen ITC'">
-          &nbsp;{{ tabledata.username }}
-        </li>
+        <li style="font-family: 'Kristen ITC'">&nbsp;{{ tabledata.username }}</li>
         <li>&nbsp;{{ tabledata.realname }}</li>
-        <li style="font-family: 'Bauhaus 93'">
-          &nbsp;{{ tabledata.telephone }}
-        </li>
+        <li style="font-family: 'Bauhaus 93'">&nbsp;{{ tabledata.telephone }}</li>
         <li>
           &nbsp;{{ tabledata.gender == "male" ? "男" : "女" }}
           <!-- <el-tag :type="tabledata.gender === 'male' ? 'success' : 'danger'">{{
             tabledata.gender
-          }}</el-tag> -->
-          <i
-            v-if="tabledata.gender === 'male'"
-            style="color: #05abef"
-            class="el-icon-male"
-          />
+          }}</el-tag>-->
+          <i v-if="tabledata.gender === 'male'" style="color: #05abef" class="el-icon-male" />
           <i
             v-else-if="tabledata.gender === 'female'"
             style="color: #eb158b"
@@ -109,12 +95,12 @@
           />
         </li>
         <li>&nbsp;{{ tabledata.roles[0].name }}</li>
-        <li style="font-family: 'Bauhaus 93'">
-          &nbsp;{{ moment(tabledata.birth).format("YYYY-MM-DD") }}
-        </li>
-        <li style="font-family: 'Bauhaus 93'">
-          &nbsp;{{ moment(tabledata.registerTime).format("YYYY-MM-DD") }}
-        </li>
+        <li
+          style="font-family: 'Bauhaus 93'"
+        >&nbsp;{{ moment(tabledata.birth).format("YYYY-MM-DD") }}</li>
+        <li
+          style="font-family: 'Bauhaus 93'"
+        >&nbsp;{{ moment(tabledata.registerTime).format("YYYY-MM-DD") }}</li>
         <li>&nbsp;{{ tabledata.email }}</li>
         <el-tag
           style="margin-top: -3px"
@@ -129,53 +115,28 @@
       <el-button type="text" @click="toReinfo">请修改个人信息</el-button>
     </div>
     <div>
-      <el-dialog
-        width="47%"
-        :title="title"
-        :visible.sync="ownVisible"
-        @close="toClose"
-      >
+      <el-dialog width="47%" :title="title" :visible.sync="ownVisible" @close="toClose">
         <!-- {{ userdata.username }} -->
         <!-- {{ info }} -->
         <el-form ref="ruleForm" :model="info" :rules="rulest">
-          <el-form-item
-            prop="username"
-            label="用户名"
-            :label-width="formLabelWidth"
-          >
+          <el-form-item prop="username" label="用户名" :label-width="formLabelWidth">
             <el-input v-model="info.username" disabled autocomplete="off" />
           </el-form-item>
-          <el-form-item
-            prop="realname"
-            label="姓名"
-            :label-width="formLabelWidth"
-          >
+          <el-form-item prop="realname" label="姓名" :label-width="formLabelWidth">
             <el-input v-model="info.realname" autocomplete="off" />
           </el-form-item>
-          <el-form-item
-            prop="gender"
-            label="性别"
-            :label-width="formLabelWidth"
-          >
+          <el-form-item prop="gender" label="性别" :label-width="formLabelWidth">
             <el-radio v-model="info.gender" label="male">男</el-radio>
             <el-radio v-model="info.gender" label="female">女</el-radio>
           </el-form-item>
-          <el-form-item
-            prop="telephone"
-            label="手机"
-            :label-width="formLabelWidth"
-          >
+          <el-form-item prop="telephone" label="手机" :label-width="formLabelWidth">
             <el-input v-model="info.telephone" autocomplete="off" />
           </el-form-item>
 
           <el-form-item prop="email" label="邮箱" :label-width="formLabelWidth">
             <el-input v-model="info.email" autocomplete="off" />
           </el-form-item>
-          <el-form-item
-            prop="birth"
-            label="出生日期"
-            :label-width="formLabelWidth"
-          >
+          <el-form-item prop="birth" label="出生日期" :label-width="formLabelWidth">
             <el-date-picker
               v-model="info.birth"
               value-format="timestamp"
@@ -185,10 +146,7 @@
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button
-            style="margin-right: 455px"
-            @click="toReset2"
-          >重置</el-button>
+          <el-button style="margin-right: 455px" @click="toReset2">重置</el-button>
           <el-button @click="ownVisible = false">取 消</el-button>
           <el-button type="primary" @click="toSureinfo">确定修改</el-button>
         </div>
@@ -221,7 +179,9 @@
               <polygon
                 fill="#C4C4C3"
                 points="1131.53,0.223 274.113,140.173 274.113,301.804 390.796,221.102   "
-              /></svg></a>
+              />
+            </svg>
+          </a>
         </div>
       </div>
       <div class="clouds">
@@ -340,46 +300,46 @@
 </template>
 
 <script>
-import { alterUserface, saveOrUpdate } from '@/api/user'
-import { showFileURL, uploadFileURL } from '@/utils/config'
-import { mapGetters } from 'vuex'
-import moment from 'moment'
+import { alterUserface, saveOrUpdate } from "@/api/user";
+import { showFileURL, uploadFileURL } from "@/utils/config";
+import { mapGetters } from "vuex";
+import moment from "moment";
 
 export default {
   data() {
     return {
       moment,
       userdata: [],
-      title: '',
+      title: "",
       visible: false,
-      form: { userface: '' },
+      form: { userface: "" },
       showFileURL,
       uploadFileURL,
-      imageUrl: '',
+      imageUrl: "",
       rules: {
         userface: [
           {
             required: true,
-            message: '请上传头像'
-          }
-        ]
+            message: "请上传头像",
+          },
+        ],
       },
       tabledata: [],
       ownVisible: false,
-      formLabelWidth: '80px',
+      formLabelWidth: "80px",
       info: {},
       rulest: {
         realname: [
           {
             required: true,
-            message: '请输入姓名',
-            trigger: 'blur'
-          }
+            message: "请输入姓名",
+            trigger: "blur",
+          },
         ],
         gender: [
           {
-            required: true
-          }
+            required: true,
+          },
         ],
         telephone: [
           // {
@@ -391,26 +351,26 @@ export default {
             // trigger: "change",
             min: 11,
             max: 11,
-            message: '请输入 11位数字值的手机号码',
-            trigger: 'blur'
-          }
+            message: "请输入 11位数字值的手机号码",
+            trigger: "blur",
+          },
         ],
         email: [
-          { message: '请输入邮箱地址', trigger: 'focus' },
+          { message: "请输入邮箱地址", trigger: "focus" },
           {
-            type: 'email',
-            message: '请输入正确的邮箱地址',
-            trigger: ['blur', 'change']
-          }
-        ]
-      }
-    }
+            type: "email",
+            message: "请输入正确的邮箱地址",
+            trigger: ["blur", "change"],
+          },
+        ],
+      },
+    };
   },
   computed: {
-    ...mapGetters(['user'])
+    ...mapGetters(["user"]),
   },
   created() {
-    this.queryUserdate()
+    this.queryUserdate();
     // console.log(this.user);
     // console.log(this.user.id);
   },
@@ -419,8 +379,8 @@ export default {
     queryUserdate() {
       // let res = await findUserDetailsById({ id });
       // this.userdata = res.data;
-      this.userdata = this.user
-      this.tabledata = this.user
+      this.userdata = this.user;
+      this.tabledata = this.user;
 
       // console.log(this.tabledata.roles[0].name);
       // for (let key in this.tabledata) {
@@ -429,90 +389,90 @@ export default {
       // }
     },
     toReplace() {
-      this.imageUrl = ''
-      this.title = '更换头像'
-      this.visible = true
+      this.imageUrl = "";
+      this.title = "更换头像";
+      this.visible = true;
     },
     toClose() {
-      this.$refs.ruleForm.resetFields()
+      this.$refs.ruleForm.resetFields();
     },
     toReset() {
-      this.form = ''
-      this.imageUrl = ''
+      this.form = "";
+      this.imageUrl = "";
     },
     toSavechange() {
-      this.$refs.ruleForm.validate(async(valid) => {
+      this.$refs.ruleForm.validate(async (valid) => {
         if (valid) {
-          this.form.id = this.user.id
-          const res = await alterUserface(this.form)
+          this.form.id = this.user.id;
+          const res = await alterUserface(this.form);
           // this.user = this.res
           // console.log(res);
           this.$notify.success({
-            title: '更换成功',
-            message: res.message
-          })
+            title: "更换成功",
+            message: res.message,
+          });
           // this.userdata.userFace = this.form.userface;
           setTimeout(() => {
-            window.location.reload()
-          }, 1000)
-          this.visible = false
+            window.location.reload();
+          }, 1000);
+          this.visible = false;
         } else {
-          return false
+          return false;
         }
-      })
+      });
     },
     handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw)
-      this.form.userface = showFileURL + res.data.id
+      this.imageUrl = URL.createObjectURL(file.raw);
+      this.form.userface = showFileURL + res.data.id;
     },
     beforeAvatarUpload(file) {
-      const isJPG = file.type === 'image/jpeg'
-      const isLt2M = file.size / 1024 / 1024 < 2
+      const isJPG = file.type === "image/jpeg";
+      const isLt2M = file.size / 1024 / 1024 < 2;
 
       if (!isJPG) {
-        this.$message.error('上传头像图片只能是 JPG 格式!')
+        this.$message.error("上传头像图片只能是 JPG 格式!");
       }
       if (!isLt2M) {
-        this.$message.error('上传头像图片大小不能超过 2MB!')
+        this.$message.error("上传头像图片大小不能超过 2MB!");
       }
-      return isJPG && isLt2M
+      return isJPG && isLt2M;
     },
     toReinfo() {
-      this.title = '修改你的信息'
-      this.info = this.tabledata
-      this.ownVisible = true
+      this.title = "修改你的信息";
+      this.info = this.tabledata;
+      this.ownVisible = true;
     },
     toReset2() {
-      this.info.realname = ''
-      this.info.telephone = ''
-      this.info.email = ''
+      this.info.realname = "";
+      this.info.telephone = "";
+      this.info.email = "";
       // this.info = "";
     },
     toSureinfo() {
-      this.$confirm('此操作将修改你的个人信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
+      this.$confirm("此操作将修改你的个人信息, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
       })
-        .then(async() => {
-          await saveOrUpdate(this.info)
+        .then(async () => {
+          const res = await saveOrUpdate(this.info);
           // console.log(res);
-          this.queryUserdate()
-          this.ownVisible = false
+          this.queryUserdate();
+          this.ownVisible = false;
           this.$message({
-            type: 'success',
-            message: '修改成功!'
-          })
+            type: "success",
+            message: "修改成功!",
+          });
         })
         .catch(() => {
           this.$message({
-            type: 'info',
-            message: '已取消修改'
-          })
-        })
-    }
-  }
-}
+            type: "info",
+            message: "已取消修改",
+          });
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>

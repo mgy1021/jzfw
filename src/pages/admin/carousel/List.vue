@@ -2,8 +2,8 @@
  * @Description:
  * @Author: wfz
  * @Date: 2021-06-25 08:48:39
- * @LastEditors: wfz
- * @LastEditTime: 2021-06-28 19:19:42
+ * @LastEditors: Mogy
+ * @LastEditTime: 2021-06-29 11:05:51
 -->
 <template>
   <!-- 轮播配置页面 -->
@@ -27,20 +27,12 @@
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
           >
-            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            <img v-if="imageUrl" :src="imageUrl" class="avatar" />
             <i v-else class="el-icon-plus avatar-uploader-icon" />
           </el-upload>
         </el-form-item>
-        <el-form-item
-          prop="introduce"
-          label="描述"
-          :label-width="formLabelWidth"
-        >
-          <el-input
-            v-model="form.introduce"
-            type="textarea"
-            placeholder="请描述一下轮播图的内容"
-          />
+        <el-form-item prop="introduce" label="描述" :label-width="formLabelWidth">
+          <el-input v-model="form.introduce" type="textarea" placeholder="请描述一下轮播图的内容" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -84,30 +76,26 @@
         </el-table-column>
         <el-table-column prop="status" label="状态" align="center">
           <template slot-scope="scope">
-            <el-tag
-              :type="scope.row.status === '正常' ? 'success' : 'danger'"
-            >{{ scope.row.status }}</el-tag>
+            <el-tag :type="scope.row.status === '正常' ? 'success' : 'danger'">{{ scope.row.status }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column fixed="right" label="操作" width="125" align="center">
           <template slot-scope="scope">
-            <el-button
-              type="text"
-              size="small"
-              @click="toEdit(scope.row)"
-            >编辑</el-button>
+            <el-button type="text" size="small" @click="toEdit(scope.row)">编辑</el-button>
             <el-button
               class="btn-delete"
               type="text"
               size="small"
               @click="toDelete(scope.row.id)"
-            >删除</el-button><el-button
+            >删除</el-button>
+            <el-button
               v-if="scope.row.status === '正常'"
               class="btn-stopUse"
               type="text"
               size="small"
               @click="toStopuse(scope.row)"
-            >停用</el-button><el-button
+            >停用</el-button>
+            <el-button
               v-else
               class="btn-startUse"
               type="text"
@@ -122,150 +110,150 @@
 </template>
 
 <script>
-import { findAll, saveOrUpdate, deleteById } from '@/api/carousel'
-import { showFileURL, uploadFileURL } from '@/utils/config'
+import { findAll, saveOrUpdate, deleteById } from "@/api/carousel";
+import { showFileURL, uploadFileURL } from "@/utils/config";
 
 export default {
   data() {
     return {
       tableData: [],
       loading: false,
-      title: '',
+      title: "",
       visible: false,
       form: {},
-      formLabelWidth: '80px',
-      imageUrl: '',
+      formLabelWidth: "80px",
+      imageUrl: "",
       viewVisible: false,
       showFileURL,
       uploadFileURL,
       rules: {
         name: {
           required: true,
-          message: '请输入轮播图名称',
-          trigger: 'blur'
+          message: "请输入轮播图名称",
+          trigger: "blur",
         },
         url: {
           required: true,
-          message: '请上传轮播图',
-          trigger: 'change'
-        }
-      }
-    }
+          message: "请上传轮播图",
+          trigger: "change",
+        },
+      },
+    };
   },
   computed: {},
   created() {
-    this.queryCarouselData()
+    this.queryCarouselData();
   },
   mounted() {},
   methods: {
     async queryCarouselData() {
-      this.loading = true
-      const res = await findAll()
-      this.loading = false
+      this.loading = true;
+      const res = await findAll();
+      this.loading = false;
       // console.log(res);
-      this.tableData = res.data || []
+      this.tableData = res.data || [];
     },
     toAdd() {
-      this.queryCarouselData()
-      this.form = {}
-      this.imageUrl = ''
-      this.title = '新增轮播图'
-      this.visible = true
+      this.queryCarouselData();
+      this.form = {};
+      this.imageUrl = "";
+      this.title = "新增轮播图";
+      this.visible = true;
     },
     toPreview() {
-      this.title = '大屏预览轮播图'
-      this.viewVisible = true
+      this.title = "大屏预览轮播图";
+      this.viewVisible = true;
     },
     toSave() {
-      this.$refs.ruleForm.validate(async(valid) => {
+      this.$refs.ruleForm.validate(async (valid) => {
         if (valid) {
           // console.log("校验通过");
           // this.form;
-          const res = await saveOrUpdate(this.form)
+          const res = await saveOrUpdate(this.form);
           // console.log(res, "***************");
           // 提示用户保存成功，刷新表格数据，关闭模态框
           this.$notify.success({
-            title: '保存成功',
-            message: res.message
-          })
-          this.queryCarouselData()
-          this.visible = false
+            title: "保存成功",
+            message: res.message,
+          });
+          this.queryCarouselData();
+          this.visible = false;
         } else {
-          return false
+          return false;
         }
-      })
+      });
     },
     toReset() {
-      this.form = {}
-      this.imageUrl = ''
+      this.form = {};
+      this.imageUrl = "";
     },
     handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw)
+      this.imageUrl = URL.createObjectURL(file.raw);
       // console.log(this.imageUrl);
-      this.form.url = showFileURL + res.data.id
+      this.form.url = showFileURL + res.data.id;
     },
     beforeAvatarUpload(file) {
-      const isJPG = file.type === 'image/jpeg'
-      const isLt2M = file.size / 1024 / 1024 < 2
+      const isJPG = file.type === "image/jpeg";
+      const isLt2M = file.size / 1024 / 1024 < 2;
 
       if (!isJPG) {
-        this.$message.error('上传头像图片只能是 JPG 格式!')
+        this.$message.error("上传头像图片只能是 JPG 格式!");
       }
       if (!isLt2M) {
-        this.$message.error('上传头像图片大小不能超过 2MB!')
+        this.$message.error("上传头像图片大小不能超过 2MB!");
       }
-      return isJPG && isLt2M
+      return isJPG && isLt2M;
     },
     toEdit(row) {
-      this.queryCarouselData()
-      this.form = { ...row }
-      this.imageUrl = this.form.url
-      this.title = '编辑轮播图信息'
-      this.visible = true
+      this.queryCarouselData();
+      this.form = { ...row };
+      this.imageUrl = this.form.url;
+      this.title = "编辑轮播图信息";
+      this.visible = true;
     },
     toDelete(id) {
-      this.$confirm('此操作将永久删除该行轮播信息, 是否继续?', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning'
+      this.$confirm("此操作将永久删除该行轮播信息, 是否继续?", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
       })
-        .then(async() => {
-          await deleteById({ id })
-          this.queryCarouselData()
+        .then(async () => {
+          await deleteById({ id });
+          this.queryCarouselData();
           this.$message({
-            type: 'success',
-            message: '删除成功!'
-          })
+            type: "success",
+            message: "删除成功!",
+          });
         })
         .catch(() => {
           this.$message({
-            type: 'info',
-            message: '已取消删除'
-          })
-        })
+            type: "info",
+            message: "已取消删除",
+          });
+        });
     },
     async toStopuse(row) {
-      row.status = '停用'
+      row.status = "停用";
       // console.log(row);
-      const res = await saveOrUpdate(row)
+      const res = await saveOrUpdate(row);
       this.$notify.success({
-        title: '停用成功',
-        message: res.message
-      })
-      this.queryCarouselData()
-      console.log(res)
+        title: "停用成功",
+        message: res.message,
+      });
+      this.queryCarouselData();
+      console.log(res);
     },
     async toStartuse(row) {
-      row.status = '正常'
-      const res = await saveOrUpdate(row)
+      row.status = "正常";
+      const res = await saveOrUpdate(row);
       this.$notify.success({
-        title: '启用成功',
-        message: res.message
-      })
-      this.queryCarouselData()
-    }
-  }
-}
+        title: "启用成功",
+        message: res.message,
+      });
+      this.queryCarouselData();
+    },
+  },
+};
 </script>
 <style scoped>
 /* 按钮样式 */
