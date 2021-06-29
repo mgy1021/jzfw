@@ -1,19 +1,10 @@
-<<<<<<< HEAD
-/*
- * @Description:产品管理api
- * @Author: wfz
- * @Date: 2021-06-22 14:52:09
- * @LastEditors: wfz
- * @LastEditTime: 2021-06-28 19:18:27
-=======
 
 /*
  * @Description: 产品管理API
  * @Author: Mogy
  * @Date: 2021-06-22 14:52:11
- * @LastEditors: ljy
- * @LastEditTime: 2021-06-28 16:30:37
->>>>>>> 3f530b4d36d1027dc12e5ed9fcc326c49255b058
+ * @LastEditors: Mogy
+ * @LastEditTime: 2021-06-28 22:05:20
  */
 import { get, post } from '@/utils/request'
 
@@ -46,7 +37,3 @@ export function productOffline(data) {
 export function productOnline(data) {
   return get('/product/online', data)
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 3f530b4d36d1027dc12e5ed9fcc326c49255b058

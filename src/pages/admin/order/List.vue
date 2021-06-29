@@ -1,17 +1,9 @@
 <!--
-<<<<<<< HEAD
- * @Description:
- * @Author: wfz
- * @Date: 2021-06-25 08:48:39
- * @LastEditors: wfz
- * @LastEditTime: 2021-06-28 18:58:58
-=======
  * @Description: 
  * @Author: Mogy
  * @Date: 2021-06-24 19:23:45
  * @LastEditors: Mogy
- * @LastEditTime: 2021-06-26 20:16:56
->>>>>>> 3f530b4d36d1027dc12e5ed9fcc326c49255b058
+ * @LastEditTime: 2021-06-29 11:19:03
 -->
 <template>
   <!-- 订单管理页 -->
@@ -109,12 +101,6 @@ import { pageQuery as pageQueryUser } from "@/api/user";
 import moment from "moment";
 export default {
   data() {
-<<<<<<< HEAD
-    return {}
-  },
-  computed: {},
-  created() {},
-=======
     return {
       radio2: null,
       form: {},
@@ -243,19 +229,13 @@ export default {
   created() {
     this.queryTableData();
   },
->>>>>>> 3f530b4d36d1027dc12e5ed9fcc326c49255b058
   mounted() {},
-  methods: {}
-}
+};
 </script>
 <style scoped>
-<<<<<<< HEAD
-</style>
-=======
 /* 设置金额的样式 */
 .money {
   color: #e65d6e;
   font-size: 18px;
 }
 </style>
->>>>>>> 3f530b4d36d1027dc12e5ed9fcc326c49255b058
