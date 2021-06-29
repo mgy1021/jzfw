@@ -3,8 +3,8 @@
  * @Description: 产品管理API
  * @Author: Mogy
  * @Date: 2021-06-22 14:52:11
- * @LastEditors: ljy
- * @LastEditTime: 2021-06-28 16:30:37
+ * @LastEditors: Mogy
+ * @LastEditTime: 2021-06-28 22:05:20
  */
 import { get, post } from '@/utils/request'
 
@@ -37,4 +37,3 @@ export function productOffline(data) {
 export function productOnline(data) {
   return get('/product/online', data)
 }
-

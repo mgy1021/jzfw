@@ -13,7 +13,7 @@
             v-model="searchForm.username"
             clearable
             placeholder="请输入用户名"
-          ></el-input>
+          />
         </el-form-item>
         <el-form-item label="">
           <el-select
@@ -21,8 +21,8 @@
             placeholder="请选择状态"
             clearable
           >
-            <el-option label="禁用" value="禁用"></el-option>
-            <el-option label="正常" value="正常"></el-option>
+            <el-option label="禁用" value="禁用" />
+            <el-option label="正常" value="正常" />
           </el-select>
         </el-form-item>
         <el-form-item>
@@ -32,39 +32,38 @@
     </div>
     <!-- 表格  -->
     <div>
-      <el-table :data="tableData" style="width: 100%" v-loading="loading">
-        <el-table-column prop="id" label="编号"> </el-table-column>
-        <el-table-column prop="username" label="用户名"> </el-table-column>
-        <el-table-column prop="realname" label="姓名"> </el-table-column>
-        <el-table-column prop="telephone" label="手机号"> </el-table-column>
-        <el-table-column prop="gender" label="性别"> </el-table-column>
+      <el-table v-loading="loading" :data="tableData" style="width: 100%">
+        <el-table-column prop="id" label="编号" />
+        <el-table-column prop="username" label="用户名" />
+        <el-table-column prop="realname" label="姓名" />
+        <el-table-column prop="telephone" label="手机号" />
+        <el-table-column prop="gender" label="性别" />
         <el-table-column prop="status" label="状态">
           <template slot-scope="scope">
             <el-tag
               :type="scope.row.status === '正常' ? 'success' : 'danger'"
-              >{{ scope.row.status }}</el-tag
-            >
+            >{{ scope.row.status }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button @click="toEdit(scope.row)" type="text" size="small"
-              >编辑</el-button
-            >
             <el-button
-              @click="toDelete(scope.row.id)"
+              type="text"
+              size="small"
+              @click="toEdit(scope.row)"
+            >编辑</el-button>
+            <el-button
               class="red_info"
               type="text"
               size="small"
-              >删除</el-button
-            >
+              @click="toDelete(scope.row.id)"
+            >删除</el-button>
             <el-button
-              @click="toInfo(scope.row.id)"
               class="blue_info"
               type="text"
               size="small"
-              >详情</el-button
-            >
+              @click="toInfo(scope.row.id)"
+            >详情</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -73,38 +72,37 @@
     <!-- 分页 -->
     <div class="pagination-div">
       <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
         :current-page="params.page"
         :page-sizes="[5, 10, 15, 25]"
         :page-size="10"
         layout="total, sizes, prev, pager, next, jumper"
         :total="total"
-      >
-      </el-pagination>
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
     </div>
     <!-- 模态框 -->
     <div>
       <el-dialog title="添加员工信息" :visible.sync="visible" @close="toClose">
         <!-- {{ ruleForm }} -->
         <el-form
+          ref="ruleForm"
           :model="form"
           :rules="rules"
-          ref="ruleForm"
           label-width="100px"
           class="demo-ruleForm"
         >
           <el-form-item label="用户名" prop="username">
-            <el-input v-model="form.username"></el-input>
+            <el-input v-model="form.username" />
           </el-form-item>
           <el-form-item label="姓名" prop="realname">
-            <el-input v-model="form.realname"></el-input>
+            <el-input v-model="form.realname" />
           </el-form-item>
           <el-form-item label="手机号" prop="telephone">
-            <el-input v-model="form.telephone"></el-input>
+            <el-input v-model="form.telephone" />
           </el-form-item>
           <el-form-item label="密码" prop="password">
-            <el-input v-model="form.password"></el-input>
+            <el-input v-model="form.password" />
           </el-form-item>
 
           <el-form-item label="性别" prop="gender">
@@ -128,23 +126,23 @@
       >
         <!-- {{ ruleForm }} -->
         <el-form
+          ref="ruleForm"
           :model="form"
           :rules="rules"
-          ref="ruleForm"
           label-width="100px"
           class="demo-ruleForm"
         >
           <el-form-item label="用户名" prop="username">
-            <el-input v-model="form.username"></el-input>
+            <el-input v-model="form.username" />
           </el-form-item>
           <el-form-item label="姓名" prop="realname">
-            <el-input v-model="form.realname"></el-input>
+            <el-input v-model="form.realname" />
           </el-form-item>
           <el-form-item label="手机号" prop="telephone">
-            <el-input v-model="form.telephone"></el-input>
+            <el-input v-model="form.telephone" />
           </el-form-item>
           <el-form-item label="密码" prop="password">
-            <el-input v-model="form.password"></el-input>
+            <el-input v-model="form.password" />
           </el-form-item>
 
           <el-form-item label="性别" prop="gender">
@@ -155,8 +153,8 @@
           </el-form-item>
           <el-form-item label="状态" prop="status">
             <el-radio-group v-model="form.status">
-              <el-radio label="禁用"></el-radio>
-              <el-radio label="正常"></el-radio>
+              <el-radio label="禁用" />
+              <el-radio label="正常" />
             </el-radio-group>
           </el-form-item>
         </el-form>
@@ -174,8 +172,8 @@ import {
   pageQuery,
   addUserWidthRole,
   saveOrUpdate,
-  deleteById,
-} from "@/api/user";
+  deleteById
+} from '@/api/user'
 
 export default {
   data() {
@@ -185,7 +183,7 @@ export default {
       params: {
         roleId: 1,
         page: 1,
-        pageSize: 10,
+        pageSize: 10
       },
       // 信息总数
       total: 0,
@@ -197,157 +195,157 @@ export default {
       loading: false,
       rules: {
         username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
+          { required: true, message: '请输入用户名', trigger: 'blur' }
         ],
-        realname: [{ required: true, message: "请输入姓名", trigger: "blur" }],
-        status: [{ required: true, trigger: "blur" }],
+        realname: [{ required: true, message: '请输入姓名', trigger: 'blur' }],
+        status: [{ required: true, trigger: 'blur' }],
         telephone: [
           {
             required: true,
-            message: "请输入手机号",
-            trigger: "blur",
-          },
+            message: '请输入手机号',
+            trigger: 'blur'
+          }
         ],
         password: [
           {
             required: true,
-            message: "请输入密码",
-            trigger: "blur",
-          },
-        ],
-      },
-    };
+            message: '请输入密码',
+            trigger: 'blur'
+          }
+        ]
+      }
+    }
   },
+  computed: {},
   watch: {
     params: {
       handler() {
-        this.queryData();
+        this.queryData()
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
-  computed: {},
+  created() {
+    this.queryData()
+  },
+  mounted() {},
   methods: {
     toInfo(id) {
       // console.log(res);
       // this.data = res;
       // console.log(id);
       this.$router.push({
-        path: "/Details",
+        path: '/Details',
         query: {
-          id: id,
-        },
-      });
+          id: id
+        }
+      })
     },
     toDelete(id) {
-      this.$confirm("是否删除该信息", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
+      this.$confirm('是否删除该信息', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
       })
-        .then(async () => {
-          let res = await deleteById({ id });
+        .then(async() => {
+          const res = await deleteById({ id })
           this.$notify.success({
-            title: "成功",
-            message: res.message,
-          });
-          this.queryData();
+            title: '成功',
+            message: res.message
+          })
+          this.queryData()
         })
         .catch(() => {
           this.$message({
-            type: "info",
-            message: "删除未成功",
-          });
-        });
+            type: 'info',
+            message: '删除未成功'
+          })
+        })
     },
     toEdit(row) {
-      this.visibleTwo = true;
-      this.form = row;
-      this.title = "编辑员工信息";
+      this.visibleTwo = true
+      this.form = row
+      this.title = '编辑员工信息'
     },
     toClose() {
-      this.$refs["ruleForm"].resetFields();
+      this.$refs['ruleForm'].resetFields()
     },
     toAdd() {
-      this.form = {};
-      this.visible = true;
-      this.title = "添加员工信息";
+      this.form = {}
+      this.visible = true
+      this.title = '添加员工信息'
     },
     async queryData() {
-      this.loading = true;
-      let temp = {
+      this.loading = true
+      const temp = {
         ...this.searchForm,
-        ...this.params,
-      };
-      for (let key in temp) {
+        ...this.params
+      }
+      for (const key in temp) {
         if (!temp[key]) {
-          delete temp[key];
+          delete temp[key]
         }
       }
-      let res = await pageQuery(temp);
+      const res = await pageQuery(temp);
       // 加载完毕
-      (this.loading = false), (this.tableData = res.data.list);
-      this.total = res.data.total;
+      (this.loading = false), (this.tableData = res.data.list)
+      this.total = res.data.total
       // console.log(res);
     },
     toSearch() {
-      this.queryData();
+      this.queryData()
     },
     handleSizeChange(val) {
       // console.log(`每页 ${val} 条`);
       this.params = {
         page: 1,
-        pageSize: val,
-      };
+        pageSize: val
+      }
     },
     handleCurrentChange(val) {
       // console.log(`当前页: ${val}`);
-      this.params.page = val;
+      this.params.page = val
     },
     toSave() {
-      this.$refs["ruleForm"].validate(async (valid) => {
+      this.$refs['ruleForm'].validate(async(valid) => {
         if (valid) {
-          let obj = {
+          const obj = {
             roleId: 1,
-            ...this.form,
-          };
-          let res = await addUserWidthRole(obj);
+            ...this.form
+          }
+          const res = await addUserWidthRole(obj)
           this.$notify.success({
-            title: "成功",
-            message: res.message,
-          });
-          this.queryData();
-          this.visible = false;
+            title: '成功',
+            message: res.message
+          })
+          this.queryData()
+          this.visible = false
         } else {
-          return false;
+          return false
         }
-      });
+      })
     },
     toSaveTwo() {
-      this.$refs["ruleForm"].validate(async (valid) => {
+      this.$refs['ruleForm'].validate(async(valid) => {
         if (valid) {
-          let obj = {
+          const obj = {
             roleId: 1,
-            ...this.form,
-          };
-          let res = await saveOrUpdate(obj);
+            ...this.form
+          }
+          const res = await saveOrUpdate(obj)
           this.$notify.success({
-            title: "成功",
-            message: res.message,
-          });
-          this.queryData();
-          this.visibleTwo = false;
+            title: '成功',
+            message: res.message
+          })
+          this.queryData()
+          this.visibleTwo = false
         } else {
-          return false;
+          return false
         }
-      });
-    },
-  },
-  created() {
-    this.queryData();
-  },
-  mounted() {},
-};
+      })
+    }
+  }
+}
 </script>
 <style lang="scss" scoped>
 .search {

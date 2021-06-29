@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: Mogy
  * @Date: 2021-06-22 14:46:32
- * @LastEditors: ljy
- * @LastEditTime: 2021-06-28 18:34:14
+ * @LastEditors: Mogy
+ * @LastEditTime: 2021-06-29 11:17:08
 -->
 <template>
   <div class="product-list">
@@ -64,12 +64,23 @@
         </el-table-column>
         <el-table-column prop="category.name" label="所属栏目" align="center"></el-table-column>
         <el-table-column label="操作" width="140" align="center">
-          <template slot-scope="scope">            
+          <template slot-scope="scope">
             <el-button type="text" size="small" @click="toEdit(scope.row)">编辑</el-button>
             <!-- <el-button v-if="scope.row.status ==='下架'" @click="toOnline(scope.row.id)" type="text" size="small">上架</el-button>
-            <el-button v-else @click="toOffline(scope.row.id)" type="text" size="small">下架</el-button> -->
-            <el-button  :disabled="scope.row.status==='正常'" @click="toOnline(scope.row.id)" type="text" size="small">上架</el-button>
-            <el-button  class="red_info" :disabled="scope.row.status==='下架'" @click="toOffline(scope.row.id)" type="text" size="small">下架</el-button>
+            <el-button v-else @click="toOffline(scope.row.id)" type="text" size="small">下架</el-button>-->
+            <el-button
+              :disabled="scope.row.status==='正常'"
+              @click="toOnline(scope.row.id)"
+              type="text"
+              size="small"
+            >上架</el-button>
+            <el-button
+              class="red_info"
+              :disabled="scope.row.status==='下架'"
+              @click="toOffline(scope.row.id)"
+              type="text"
+              size="small"
+            >下架</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -133,7 +144,12 @@
 
 <script>
 import { pageQuery } from "@/api/proCategory";
-import { pageQuery as pageQueryPro, saveOrUpdate,online,offline } from "@/api/product";
+import {
+  pageQuery as pageQueryPro,
+  saveOrUpdate,
+  online,
+  offline,
+} from "@/api/product";
 import { showFileURL, uploadFileURL } from "@/utils/config";
 
 export default {
@@ -288,13 +304,13 @@ export default {
       this.$refs.ruleForm.resetFields();
       // 关闭模态框
       // 超时调用
-    //   setTimeout(() => {
-    //     this.visible = false;
-    //   }, 200);
+      //   setTimeout(() => {
+      //     this.visible = false;
+      //   }, 200);
     },
     toEdit(row) {
-        // 显示模态框
-        this.visible = true
+      // 显示模态框
+      this.visible = true;
       //   设置表单数据
       this.tableForm = {
         ...row,
@@ -304,22 +320,22 @@ export default {
       this.title = "编辑产品信息";
     },
     // 上架产品
-    async toOnline(id){
-        let res = await online({id})
-        this.$notify.success({
-            title:'成功',
-            message:res.message
-        })
-        this.queryData();
+    async toOnline(id) {
+      let res = await online({ id });
+      this.$notify.success({
+        title: "成功",
+        message: res.message,
+      });
+      this.queryData();
     },
-    async toOffline(id){
-        let res = await offline({id})
-        this.$notify.success({
-            title:'成功',
-            message:res.message
-        })
-        this.queryData();
-    }
+    async toOffline(id) {
+      let res = await offline({ id });
+      this.$notify.success({
+        title: "成功",
+        message: res.message,
+      });
+      this.queryData();
+    },
   },
   //   监听
   watch: {

@@ -1,3 +1,10 @@
+<!--
+ * @Description:
+ * @Author: wfz
+ * @Date: 2021-06-25 08:48:39
+ * @LastEditors: Mogy
+ * @LastEditTime: 2021-06-29 11:05:51
+-->
 <template>
   <!-- 轮播配置页面 -->
   <div>
@@ -24,16 +31,8 @@
             <i v-else class="el-icon-plus avatar-uploader-icon" />
           </el-upload>
         </el-form-item>
-        <el-form-item
-          prop="introduce"
-          label="描述"
-          :label-width="formLabelWidth"
-        >
-          <el-input
-            v-model="form.introduce"
-            type="textarea"
-            placeholder="请描述一下轮播图的内容"
-          />
+        <el-form-item prop="introduce" label="描述" :label-width="formLabelWidth">
+          <el-input v-model="form.introduce" type="textarea" placeholder="请描述一下轮播图的内容" />
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -77,38 +76,32 @@
         </el-table-column>
         <el-table-column prop="status" label="状态" align="center">
           <template slot-scope="scope">
-            <el-tag
-              :type="scope.row.status === '正常' ? 'success' : 'danger'"
-              >{{ scope.row.status }}</el-tag
-            >
+            <el-tag :type="scope.row.status === '正常' ? 'success' : 'danger'">{{ scope.row.status }}</el-tag>
           </template>
         </el-table-column>
         <el-table-column fixed="right" label="操作" width="125" align="center">
           <template slot-scope="scope">
-            <el-button type="text" size="small" @click="toEdit(scope.row)"
-              >编辑</el-button
-            >
+            <el-button type="text" size="small" @click="toEdit(scope.row)">编辑</el-button>
             <el-button
               class="btn-delete"
               type="text"
               size="small"
               @click="toDelete(scope.row.id)"
-              >删除</el-button
-            ><el-button
+            >删除</el-button>
+            <el-button
               v-if="scope.row.status === '正常'"
               class="btn-stopUse"
               type="text"
               size="small"
               @click="toStopuse(scope.row)"
-              >停用</el-button
-            ><el-button
+            >停用</el-button>
+            <el-button
               v-else
               class="btn-startUse"
               type="text"
               size="small"
               @click="toStartuse(scope.row)"
-              >启用</el-button
-            >
+            >启用</el-button>
           </template>
         </el-table-column>
       </el-table>

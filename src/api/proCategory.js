@@ -2,8 +2,8 @@
  * @Description: 产品栏目API
  * @Author: Mogy
  * @Date: 2021-06-22 16:33:30
- * @LastEditors: ljy
- * @LastEditTime: 2021-06-28 18:31:46
+ * @LastEditors: Mogy
+ * @LastEditTime: 2021-06-29 10:56:27
  */
 // 产品栏目api
 import { get, post } from '@/utils/request'

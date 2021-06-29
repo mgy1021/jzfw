@@ -18,13 +18,7 @@
     <!-- //*******************************头像 *******************************************-->
 
     <!-- //*******************************更换头像模态框 **********************************-->
-    <el-dialog
-      :title="title"
-      :visible.sync="visible"
-      width="45%"
-      class="motai1"
-      @close="toClose"
-    >
+    <el-dialog :title="title" :visible.sync="visible" width="45%" class="motai1" @close="toClose">
       <el-form ref="ruleForm" :model="form" :rules="rules">
         <el-form-item prop="userface">
           <el-upload
@@ -50,7 +44,7 @@
     <!-- {{ user }} -->
     <!-- <br />
     <br />
-    <br /> -->
+    <br />-->
     <!-- {{ tabledata }} -->
     <br />
     <br />
@@ -70,7 +64,7 @@
         <el-table-column prop="birth" label="生日"> </el-table-column>
         <el-table-column prop="email" label="邮箱"> </el-table-column>
         <el-table-column prop="status" label="状态"> </el-table-column>
-      </el-table> -->
+      </el-table>-->
 
       <!-- //*******************************个人信息展示 **********************************-->
       <ul class="msg">
@@ -85,23 +79,15 @@
         <li>你的状态</li>
       </ul>
       <ul class="t-data">
-        <li style="font-family: 'Kristen ITC'">
-          &nbsp;{{ tabledata.username }}
-        </li>
+        <li style="font-family: 'Kristen ITC'">&nbsp;{{ tabledata.username }}</li>
         <li>&nbsp;{{ tabledata.realname }}</li>
-        <li style="font-family: 'Bauhaus 93'">
-          &nbsp;{{ tabledata.telephone }}
-        </li>
+        <li style="font-family: 'Bauhaus 93'">&nbsp;{{ tabledata.telephone }}</li>
         <li>
           &nbsp;{{ tabledata.gender == "male" ? "男" : "女" }}
           <!-- <el-tag :type="tabledata.gender === 'male' ? 'success' : 'danger'">{{
             tabledata.gender
-          }}</el-tag> -->
-          <i
-            v-if="tabledata.gender === 'male'"
-            style="color: #05abef"
-            class="el-icon-male"
-          />
+          }}</el-tag>-->
+          <i v-if="tabledata.gender === 'male'" style="color: #05abef" class="el-icon-male" />
           <i
             v-else-if="tabledata.gender === 'female'"
             style="color: #eb158b"
@@ -109,18 +95,17 @@
           />
         </li>
         <li>&nbsp;{{ tabledata.roles[0].name }}</li>
-        <li style="font-family: 'Bauhaus 93'">
-          &nbsp;{{ moment(tabledata.birth).format("YYYY-MM-DD") }}
-        </li>
-        <li style="font-family: 'Bauhaus 93'">
-          &nbsp;{{ moment(tabledata.registerTime).format("YYYY-MM-DD") }}
-        </li>
+        <li
+          style="font-family: 'Bauhaus 93'"
+        >&nbsp;{{ moment(tabledata.birth).format("YYYY-MM-DD") }}</li>
+        <li
+          style="font-family: 'Bauhaus 93'"
+        >&nbsp;{{ moment(tabledata.registerTime).format("YYYY-MM-DD") }}</li>
         <li>&nbsp;{{ tabledata.email }}</li>
         <el-tag
           style="margin-top: -3px"
           :type="tabledata.status === '正常' ? 'success' : 'danger'"
-          >{{ tabledata.status }}</el-tag
-        >
+        >{{ tabledata.status }}</el-tag>
       </ul>
     </div>
     <!-- //*******************************个人信息展示 **********************************-->
@@ -130,53 +115,28 @@
       <el-button type="text" @click="toReinfo">请修改个人信息</el-button>
     </div>
     <div>
-      <el-dialog
-        width="47%"
-        :title="title"
-        :visible.sync="ownVisible"
-        @close="toClose"
-      >
+      <el-dialog width="47%" :title="title" :visible.sync="ownVisible" @close="toClose">
         <!-- {{ userdata.username }} -->
         <!-- {{ info }} -->
         <el-form ref="ruleForm" :model="info" :rules="rulest">
-          <el-form-item
-            prop="username"
-            label="用户名"
-            :label-width="formLabelWidth"
-          >
+          <el-form-item prop="username" label="用户名" :label-width="formLabelWidth">
             <el-input v-model="info.username" disabled autocomplete="off" />
           </el-form-item>
-          <el-form-item
-            prop="realname"
-            label="姓名"
-            :label-width="formLabelWidth"
-          >
+          <el-form-item prop="realname" label="姓名" :label-width="formLabelWidth">
             <el-input v-model="info.realname" autocomplete="off" />
           </el-form-item>
-          <el-form-item
-            prop="gender"
-            label="性别"
-            :label-width="formLabelWidth"
-          >
+          <el-form-item prop="gender" label="性别" :label-width="formLabelWidth">
             <el-radio v-model="info.gender" label="male">男</el-radio>
             <el-radio v-model="info.gender" label="female">女</el-radio>
           </el-form-item>
-          <el-form-item
-            prop="telephone"
-            label="手机"
-            :label-width="formLabelWidth"
-          >
+          <el-form-item prop="telephone" label="手机" :label-width="formLabelWidth">
             <el-input v-model="info.telephone" autocomplete="off" />
           </el-form-item>
 
           <el-form-item prop="email" label="邮箱" :label-width="formLabelWidth">
             <el-input v-model="info.email" autocomplete="off" />
           </el-form-item>
-          <el-form-item
-            prop="birth"
-            label="出生日期"
-            :label-width="formLabelWidth"
-          >
+          <el-form-item prop="birth" label="出生日期" :label-width="formLabelWidth">
             <el-date-picker
               v-model="info.birth"
               value-format="timestamp"
@@ -186,9 +146,7 @@
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
-          <el-button style="margin-right: 455px" @click="toReset2"
-            >重置</el-button
-          >
+          <el-button style="margin-right: 455px" @click="toReset2">重置</el-button>
           <el-button @click="ownVisible = false">取 消</el-button>
           <el-button type="primary" @click="toSureinfo">确定修改</el-button>
         </div>
@@ -221,8 +179,9 @@
               <polygon
                 fill="#C4C4C3"
                 points="1131.53,0.223 274.113,140.173 274.113,301.804 390.796,221.102   "
-              /></svg
-          ></a>
+              />
+            </svg>
+          </a>
         </div>
       </div>
       <div class="clouds">

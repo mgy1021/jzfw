@@ -40,7 +40,7 @@ export const constantRoutes = [
       {
         path: '/redirect/:path*',
         component: () => import('@/views/redirect/index')
-      },
+      }
       // {
       //   path: '/Details',
       //   component: () => import('@/pages/admin/waiter/Details'),
@@ -99,7 +99,7 @@ export const constantRoutes = [
         path: '/Details',
         component: () => import('@/pages/admin/info/article/Details'),
         hidden: true
-      },
+      }
     ]
   }
 ]

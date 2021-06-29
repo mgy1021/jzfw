@@ -1,5 +1,5 @@
 <!--
- * @Description: 
+ * @Description:
  * @Author: ljy
  * @Date: 2021-06-24 16:23:07
  * @LastEditors: ljy
@@ -9,17 +9,20 @@
   <div>
     <div class="top">
       <div class="tp">
-        <img :src="userdata.userFace" class="photo" />
-        <el-button type="text" @click="toChangeTwo" class="userface"
-          >修改头像</el-button>
+        <img :src="userdata.userFace" class="photo">
+        <el-button
+          type="text"
+          class="userface"
+          @click="toChangeTwo"
+        >修改头像</el-button>
       </div>
 
       <el-dialog title="更改头像" :visible.sync="visibleTwo" @close="toClose">
         <!-- {{ form }} -->
         <el-form
+          ref="ruleForm"
           :model="form"
           :rules="rules"
-          ref="ruleForm"
           label-width="100px"
           class="demo-ruleForm"
         >
@@ -30,8 +33,8 @@
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload"
           >
-            <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            <img v-if="imageUrl" :src="imageUrl" class="avatar">
+            <i v-else class="el-icon-plus avatar-uploader-icon" />
           </el-upload>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -40,7 +43,7 @@
         </div>
       </el-dialog>
     </div>
-    <el-divider></el-divider>
+    <el-divider />
     <div class="content">
       <div class="item">
         <div>
@@ -48,41 +51,34 @@
           <span class="itemTwo">{{ userdata.username }}</span>
         </div>
         <div>
-          <label>用户姓名</label
-          ><span class="itemTwo">{{ userdata.realname }}</span>
+          <label>用户姓名</label><span class="itemTwo">{{ userdata.realname }}</span>
         </div>
         <div>
-          <label>用户手机</label
-          ><span class="itemTwo">{{ userdata.telephone }}</span>
+          <label>用户手机</label><span class="itemTwo">{{ userdata.telephone }}</span>
         </div>
         <div>
-          <label>用户性别</label
-          ><span class="itemTwo">{{ userdata.gender }}</span>
+          <label>用户性别</label><span class="itemTwo">{{ userdata.gender }}</span>
         </div>
         <div>
-          <label>用户角色</label
-          ><span class="itemTwo">{{ userdata.idCard }}</span>
+          <label>用户角色</label><span class="itemTwo">{{ userdata.idCard }}</span>
         </div>
         <div>
-          <label>用户生日</label
-          ><span class="itemTwo">{{ userdata.birth }}</span>
+          <label>用户生日</label><span class="itemTwo">{{ userdata.birth }}</span>
         </div>
         <div>
-          <label>注册时间</label
-          ><span class="itemTwo">{{ userdata.registertime }}</span>
+          <label>注册时间</label><span class="itemTwo">{{ userdata.registertime }}</span>
         </div>
         <div>
           <label>邮箱</label><span class="itemTwo">{{ userdata.email }}</span>
         </div>
         <div>
-          <label>用户状态</label
-          ><el-tag class="itemTwo"
-              :type=" userdata.status  === '正常' ? 'success' : 'danger'"
-              >{{ userdata.status }}</el-tag
-            >
+          <label>用户状态</label><el-tag
+            class="itemTwo"
+            :type=" userdata.status === '正常' ? 'success' : 'danger'"
+          >{{ userdata.status }}</el-tag>
         </div>
       </div>
-      <el-divider></el-divider>
+      <el-divider />
       <div class="right">
         <el-button type="text" @click="toChange">修改个人信息</el-button>
       </div>
@@ -91,17 +87,17 @@
       <el-dialog title="修改员工信息" :visible.sync="visible" @close="toClose">
         <!-- {{ form }} -->
         <el-form
+          ref="ruleForm"
           :model="form"
           :rules="rules"
-          ref="ruleForm"
           label-width="100px"
           class="demo-ruleForm"
         >
           <el-form-item label="登录用户" prop="username">
-            <el-input v-model="form.username"></el-input>
+            <el-input v-model="form.username" />
           </el-form-item>
           <el-form-item label="姓名" prop="realname">
-            <el-input v-model="form.realname"></el-input>
+            <el-input v-model="form.realname" />
           </el-form-item>
           <el-form-item label="性别" prop="gender">
             <el-radio-group v-model="form.gender">
@@ -110,13 +106,13 @@
             </el-radio-group>
           </el-form-item>
           <el-form-item label="用户手机" prop="telephone">
-            <el-input v-model="form.telephone"></el-input>
+            <el-input v-model="form.telephone" />
           </el-form-item>
           <el-form-item label="用户邮箱" prop="email">
-            <el-input v-model="form.email"></el-input>
+            <el-input v-model="form.email" />
           </el-form-item>
           <el-form-item label="出生日期" prop="dob">
-            <el-input v-model="form.registerTime"></el-input>
+            <el-input v-model="form.registerTime" />
           </el-form-item>
         </el-form>
         <div slot="footer" class="dialog-footer">
@@ -133,9 +129,9 @@ import {
   saveOrUpdate,
   findUserDetailsById,
   alterUserface,
-  upload,
-} from "@/api/user";
-import { showFileURL, uploadFileURL } from "@/utils/config";
+  upload
+} from '@/api/user'
+import { showFileURL, uploadFileURL } from '@/utils/config'
 
 export default {
   data() {
@@ -143,7 +139,7 @@ export default {
       visibleTwo: false,
       showFileURL,
       uploadFileURL,
-      imageUrl: "",
+      imageUrl: '',
       userdata: [],
       visible: false,
       form: {},
@@ -151,86 +147,86 @@ export default {
         realname: [
           {
             required: true,
-            message: "请输入姓名",
-            trigger: "blur",
-          },
+            message: '请输入姓名',
+            trigger: 'blur'
+          }
         ],
         gender: [
           {
             required: true,
-            message: "请输入性别",
-            trigger: "blur",
-          },
-        ],
-      },
-    };
+            message: '请输入性别',
+            trigger: 'blur'
+          }
+        ]
+      }
+    }
   },
   computed: {},
+  created() {
+    this.toQuery()
+    // console.log(this.$route.query.id);
+  },
+  mounted() {},
   methods: {
     async toSaveTwo() {
-      let res = await alterUserface({
+      const res = await alterUserface({
         id: this.$route.query.id,
-        userface: this.form.userFace,
-      });
-      this.toQuery();
-      this.visibleTwo = false;
+        userface: this.form.userFace
+      })
+      this.toQuery()
+      this.visibleTwo = false
       this.$notify.success({
-        title: "成功",
-        message: res.message,
-      });
+        title: '成功',
+        message: res.message
+      })
     },
     toChangeTwo() {
-      this.visibleTwo = true;
+      this.visibleTwo = true
     },
     async toQuery() {
-      let res = await findUserDetailsById({ id: this.$route.query.id });
-      this.userdata = res.data;
+      const res = await findUserDetailsById({ id: this.$route.query.id })
+      this.userdata = res.data
       // this.imageUrl = res.data.userFace;
       // console.log(res.data);
     },
     toChange() {
-      this.visible = true;
-      this.form = this.userdata;
+      this.visible = true
+      this.form = this.userdata
     },
     toClose() {},
     toSave() {
-      this.$refs["ruleForm"].validate(async (valid) => {
+      this.$refs['ruleForm'].validate(async(valid) => {
         if (valid) {
-          let res = await saveOrUpdate(this.form);
+          const res = await saveOrUpdate(this.form)
           this.$notify.success({
-            title: "成功",
-            message: res.message,
-          });
-          this.visible = false;
+            title: '成功',
+            message: res.message
+          })
+          this.visible = false
         } else {
-          return false;
+          return false
         }
-      });
+      })
     },
     handleAvatarSuccess(res, file) {
-      this.imageUrl = URL.createObjectURL(file.raw);
+      this.imageUrl = URL.createObjectURL(file.raw)
       // console.log(this.imageUrl);
-      this.form.userFace = showFileURL + res.data.id;
+      this.form.userFace = showFileURL + res.data.id
     },
     beforeAvatarUpload(file) {
-      const isJPG = file.type === "image/jpeg";
-      const isLt2M = file.size / 1024 / 1024 < 2;
+      const isJPG = file.type === 'image/jpeg'
+      const isLt2M = file.size / 1024 / 1024 < 2
 
       if (!isJPG) {
-        this.$message.error("上传头像图片只能是 JPG 格式!");
+        this.$message.error('上传头像图片只能是 JPG 格式!')
       }
       if (!isLt2M) {
-        this.$message.error("上传头像图片大小不能超过 2MB!");
+        this.$message.error('上传头像图片大小不能超过 2MB!')
       }
-      return isJPG && isLt2M;
-    },
-  },
-  created() {
-    this.toQuery();
-    // console.log(this.$route.query.id);
-  },
-  mounted() {},
-};
+      return isJPG && isLt2M
+    }
+  }
+}
 </script>
 <style lang="scss" scoped>
 .top {

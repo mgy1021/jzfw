@@ -1,5 +1,5 @@
 <!--
- * @Description: 
+ * @Description:
  * @Author: Mogy
  * @Date: 2021-06-24 19:23:45
  * @LastEditors: Mogy
@@ -13,20 +13,20 @@
     </div>
     <!-- 表格 -->
     <el-table :data="tableData" stripe style="width: 100%">
-      <el-table-column prop="id" label="订单项编号" width="180"></el-table-column>
-      <el-table-column prop="productId" label="产品编号" width="180"></el-table-column>
-      <el-table-column prop="product.name" label="产品"></el-table-column>
+      <el-table-column prop="id" label="订单项编号" width="180" />
+      <el-table-column prop="productId" label="产品编号" width="180" />
+      <el-table-column prop="product.name" label="产品" />
       <el-table-column prop="product.photo" label="产品图片">
         <template slot-scope="scope">
           <el-image
             style="width: 50px; height: 50px"
             :src="scope.row.product.photo"
             :preview-src-list="[scope.row.product.photo]"
-          ></el-image>
+          />
         </template>
       </el-table-column>
-      <el-table-column prop="price" label="单价"></el-table-column>
-      <el-table-column prop="number" label="数量"></el-table-column>
+      <el-table-column prop="price" label="单价" />
+      <el-table-column prop="number" label="数量" />
     </el-table>
     <!-- 卡片组 -->
     <div class="card">
@@ -34,44 +34,44 @@
         <div slot="header" class="clearfix">
           <span>订单基本信息</span>
         </div>
-        <div class="card-item">订单信息: {{orderData.id}}</div>
+        <div class="card-item">订单信息: {{ orderData.id }}</div>
         <div class="card-item">
           订单金额: ￥
-          <span class="money">{{orderData.total}}</span> 元
+          <span class="money">{{ orderData.total }}</span> 元
         </div>
-        <div class="card-item">下单时间: {{moment(orderData.orderTime).format("YYYY-MM-DD hh:mm:ss")}}</div>
-        <div class="card-item">订单状态: {{orderData.status}}</div>
+        <div class="card-item">下单时间: {{ moment(orderData.orderTime).format("YYYY-MM-DD hh:mm:ss") }}</div>
+        <div class="card-item">订单状态: {{ orderData.status }}</div>
       </el-card>
-      <el-card class="box-card" v-if="employeeData">
+      <el-card v-if="employeeData" class="box-card">
         <div slot="header" class="clearfix">
           <span>接单者信息</span>
         </div>
-        <div class="card-item">接单者: {{employeeData.realname}}</div>
-        <div class="card-item">接单者手机号: {{employeeData.telephone}}</div>
+        <div class="card-item">接单者: {{ employeeData.realname }}</div>
+        <div class="card-item">接单者手机号: {{ employeeData.telephone }}</div>
       </el-card>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
           <span>下单者信息</span>
         </div>
-        <div class="card-item">下单者: {{customerData.realname}}</div>
-        <div class="card-item">下单者手机号: {{customerData.telephone}}</div>
+        <div class="card-item">下单者: {{ customerData.realname }}</div>
+        <div class="card-item">下单者手机号: {{ customerData.telephone }}</div>
       </el-card>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
           <span>雇主信息</span>
         </div>
-        <div class="card-item">雇主: {{addressData.username}}</div>
-        <div class="card-item">雇主手机号: {{addressData.telephone}}</div>
+        <div class="card-item">雇主: {{ addressData.username }}</div>
+        <div class="card-item">雇主手机号: {{ addressData.telephone }}</div>
         <div
           class="card-item"
-        >服务地址: {{addressData.province+addressData.city+addressData.area+addressData.address}}</div>
+        >服务地址: {{ addressData.province+addressData.city+addressData.area+addressData.address }}</div>
       </el-card>
     </div>
   </div>
 </template>
 
 <script>
-import moment from "moment";
+import moment from 'moment'
 export default {
   data() {
     return {
@@ -80,27 +80,27 @@ export default {
       OrderData: {},
       customerData: {},
       addressData: {},
-      employeeData: {},
-    };
+      employeeData: {}
+    }
   },
   computed: {},
-  methods: {
-    // 跳转路由
-    toBack() {
-      this.$router.push("/admin/order/List");
-    },
-  },
   created() {
-    this.tableData = JSON.parse(this.$route.query.orderData).orderLines;
+    this.tableData = JSON.parse(this.$route.query.orderData).orderLines
     // console.log(JSON.parse(this.$route.query.orderData));
-    this.orderData = JSON.parse(this.$route.query.orderData);
-    this.customerData = JSON.parse(this.$route.query.orderData).customer;
-    this.addressData = JSON.parse(this.$route.query.orderData).address;
-    this.employeeData = JSON.parse(this.$route.query.orderData).employee;
+    this.orderData = JSON.parse(this.$route.query.orderData)
+    this.customerData = JSON.parse(this.$route.query.orderData).customer
+    this.addressData = JSON.parse(this.$route.query.orderData).address
+    this.employeeData = JSON.parse(this.$route.query.orderData).employee
     // console.log(this.employeeData);
   },
   mounted() {},
-};
+  methods: {
+    // 跳转路由
+    toBack() {
+      this.$router.push('/admin/order/List')
+    }
+  }
+}
 </script>
 <style scoped>
 .card {
