@@ -1,12 +1,13 @@
 <!--
  * @Author: lucky
  * @Date: 2021-06-24 15:58:53
- * @LastEditors: ljy
- * @LastEditTime: 2021-06-28 18:32:40
+ * @LastEditors: wfz
+ * @LastEditTime: 2021-06-29 11:26:56
  * @Description:  基础配置页面
 -->
 <template>
   <div>
+    <div>ddfd</div>
     <!-- 新增按钮------------ -->
     <el-button type="primary" @click="toAdd">新增</el-button>
     <!-- 表格 ----------------------------------- -->
@@ -27,8 +28,18 @@
         <el-table-column prop="introduce" label="介绍" />
         <el-table-column label="操作">
           <template slot-scope="scope">
-            <el-button type="info" icon="el-icon-edit" circle @click="toEdit(scope.row)" />
-            <el-button type="danger" icon="el-icon-delete" circle @click="toDelete(scope.row.id)" />
+            <el-button
+              type="info"
+              icon="el-icon-edit"
+              circle
+              @click="toEdit(scope.row)"
+            />
+            <el-button
+              type="danger"
+              icon="el-icon-delete"
+              circle
+              @click="toDelete(scope.row.id)"
+            />
           </template>
         </el-table-column>
       </el-table>
@@ -66,7 +77,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button @click="visible=false">取 消</el-button>
+        <el-button @click="visible = false">取 消</el-button>
         <el-button type="primary" @click="toSave">确 定</el-button>
       </div>
     </el-dialog>
