@@ -2,8 +2,8 @@
  * @Description:
  * @Author: wfz
  * @Date: 2021-06-25 08:48:39
- * @LastEditors: wfz
- * @LastEditTime: 2021-06-25 22:20:39
+ * @LastEditors: Mogy
+ * @LastEditTime: 2021-06-29 11:11:41
  */
 // 轮播图配置api
 import { get, post } from '@/utils/request'
