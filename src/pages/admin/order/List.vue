@@ -3,7 +3,7 @@
  * @Author: Mogy
  * @Date: 2021-06-24 19:23:45
  * @LastEditors: Mogy
- * @LastEditTime: 2021-06-29 11:19:03
+ * @LastEditTime: 2021-07-03 09:19:28
 -->
 <template>
   <!-- 订单管理页 -->
@@ -50,12 +50,14 @@
             type="text"
             size="small"
             @click="toSendOrder(scope.row.id)"
+            style="color:#13ce66"
           >派单</el-button>
           <el-button
             v-else-if="scope.row.status ==='待接单'"
             type="text"
             size="small"
             @click="toCancelSendOrder(scope.row.id)"
+            style="color:#ffba00"
           >取消派单</el-button>
         </template>
       </el-table-column>

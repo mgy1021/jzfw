@@ -36,7 +36,9 @@ export function filterAsyncRoutes(routes, roles) {
 }
 
 const state = {
+  // 合并之后的数组
   routes: [],
+  // 动态路由数组
   addRoutes: []
 }
 
